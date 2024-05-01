@@ -68,15 +68,22 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
 
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj={pizza} key={pizza.name} />
-        ))}
-      </ul>
+      {numPizzas > 0 ? (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      ) : (
+        <p>No pizzas for today</p>
+      )}
 
       {/* 
       <Pizza
@@ -114,9 +121,27 @@ function Footer() {
   const openHours = 8;
   const closeHours = 22;
   const isOpen = hour >= openHours && hour < closeHours;
-  const message = isOpen ? "We are open" : "We are closed";
+  //const message = isOpen ? "We are open" : "We are closed";
 
-  return <footer className="footer">{message}</footer>;
+  return (
+    <footer className="footer">
+      {isOpen ? (
+        <div className="order">
+          <p>
+            <p>
+              We are open until {closeHours}:00. Come visit us or order online.
+            </p>
+          </p>
+          <button className="btn">Order</button>
+        </div>
+      ) : (
+        <p>
+          We are happy to welcome you between {openHours}:00 and {closeHours}
+          :00.
+        </p>
+      )}
+    </footer>
+  );
 
   // return (
   //   <footer>©{new Date().getFullYear()} - Luiz Paulo Saud Gonçalves</footer>
