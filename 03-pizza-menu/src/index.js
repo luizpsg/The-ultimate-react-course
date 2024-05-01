@@ -49,12 +49,43 @@ const pizzaData = [
 function App() {
   return (
     <div>
-      <h1>Hello, ReactWorld!</h1>
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
+  );
+}
+
+function Header() {
+  return <h1>Fast React Pizza Co.</h1>;
+}
+
+function Menu() {
+  return (
+    <div>
       <Pizza />
       <Pizza />
       <Pizza />
     </div>
   );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const openHours = 8;
+  const closeHours = 22;
+  const isOpen = hour >= openHours && hour < closeHours;
+  const message = isOpen ? "We are open" : "We are closed";
+  return <footer>{message}</footer>;
+
+  // return (
+  //   <footer>©{new Date().getFullYear()} - Luiz Paulo Saud Gonçalves</footer>
+  // );
+  //  return React.createElement(
+  //    "footer",
+  //    null,
+  //   "© 2024 Luiz Paulo Saud Gonçalves"
+  //  );
 }
 
 function Pizza() {
