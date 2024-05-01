@@ -136,17 +136,9 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>
-            We are open until {closeHours}:00. Come visit us or order online.
-          </p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHours={closeHours} />
       ) : (
-        <p>
-          We are happy to welcome you between {openHours}:00 and {closeHours}
-          :00.
-        </p>
+        <WeAreClosed openHours={openHours} closeHours={closeHours} />
       )}
     </footer>
   );
@@ -159,6 +151,26 @@ function Footer() {
   //    null,
   //   "© 2024 Luiz Paulo Saud Gonçalves"
   //  );
+}
+
+function Order(props) {
+  return (
+    <div className="order">
+      <p>
+        We are open until {props.closeHours}:00. Come visit us or order online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
+}
+
+function WeAreClosed(props) {
+  return (
+    <p>
+      We are happy to welcome you between {props.openHours}:00 and{" "}
+      {props.closeHours}:00.
+    </p>
+  );
 }
 
 // React v18
