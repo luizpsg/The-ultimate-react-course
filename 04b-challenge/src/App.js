@@ -1,11 +1,11 @@
 import React from "react";
-import Counter from "./Counter";
+import Counterv2 from "./Counterv2";
 
 function App() {
   return (
     <div>
       <h1>Counter</h1>
-      <Counter />
+      <Counterv2 />
     </div>
   );
 }
