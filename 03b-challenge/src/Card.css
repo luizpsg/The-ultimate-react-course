@@ -1,0 +1,14 @@
+.skill {
+  color: white;
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 10px; /* Bordas arredondadas */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre o ícone e o texto */
+}
+
+.icon {
+  width: 20px; /* Tamanho do ícone */
+  height: 20px;
+}
