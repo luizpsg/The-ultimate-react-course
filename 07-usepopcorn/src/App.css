@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+/* App.css */
+body {
+  overflow: hidden;
+}
+
+.nav-bar {
+  overflow: hidden;
+}
+
+.main {
+  overflow: hidden;
+}
+
+.box {
+  overflow: hidden;
+}
+
+/* Se você tiver outras classes específicas para os elementos onde as barras de rolagem aparecem, adicione-as aqui */
+.list {
+  overflow: hidden;
+}
+
+.details {
+  overflow: hidden;
+}
