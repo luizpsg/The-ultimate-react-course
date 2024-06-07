@@ -3,6 +3,7 @@ import StartRating from "./StarRating";
 import { useMovies } from "./useMovies";
 import "./App.css";
 import { useLocalStorageState } from "./useLocalStorageState";
+import { useKey } from "./useKey";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -37,7 +38,11 @@ export default function App() {
   return (
     <>
       <NavBar>
-        <Search query={query} setQuery={setQuery} />
+        <Search
+          query={query}
+          setQuery={setQuery}
+          onCloseMovie={handleCloseMovie}
+        />
         <NumResults movies={movies} />
       </NavBar>
 
@@ -104,29 +109,15 @@ function Logo() {
   );
 }
 
-function Search({ query, setQuery }) {
+function Search({ query, setQuery, onCloseMovie }) {
   const inputEl = useRef(null);
 
-  useEffect(() => {
-    function callback(e) {
-      if (document.activeElement === inputEl.current) return;
-
-      if (e.code === "Enter") {
-        inputEl.current.focus();
-        setQuery("");
-      }
-    }
-    document.addEventListener("keydown", callback);
-
-    return () => {
-      document.removeEventListener("keydown", callback);
-    };
-  }, [setQuery]);
-
-  // useEffect(() => {
-  //   const el = document.querySelector(".search");
-  //   el.focus();
-  // }, []);
+  useKey("Enter", () => {
+    if (document.activeElement === inputEl.current) return;
+    inputEl.current.focus();
+    setQuery("");
+    onCloseMovie();
+  });
 
   return (
     <input
@@ -220,21 +211,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onCloseMovie();
   }
 
-  useEffect(() => {
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        onCloseMovie();
-      }
-    });
-
-    return () => {
-      document.removeEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          onCloseMovie();
-        }
-      });
-    };
-  }, [onCloseMovie]);
+  useKey("Escape", onCloseMovie);
 
   useEffect(
     function () {
