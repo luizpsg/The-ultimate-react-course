@@ -6,5 +6,9 @@
   list-style: none;
   display: flex;
   justify-content: space-between;
-  padding: 0;
+}
+
+.nav :global(.active) {
+  color: white;
+  background-color: green;
 }
