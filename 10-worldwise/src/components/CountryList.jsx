@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import Spinner from "./Spinner";
 import styles from "./CountryList.module.css";
