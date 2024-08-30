@@ -1,15 +1,15 @@
-/* eslint-disable no-unused-vars */
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Homepage";
 
-import Pricing from "./pages/Pricing";
-import Product from "./pages/Product";
-import Login from "./pages/Login";
-import AppLayout from "./pages/AppLayout";
-import PageNotFound from "./pages/PageNotFound";
 import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
+import AppLayout from "./pages/AppLayout";
+import Login from "./pages/Login";
+import PageNotFound from "./pages/PageNotFound";
+import Pricing from "./pages/Pricing";
+import Product from "./pages/Product";
+import City from "./components/City";
 
 const URL = "http://localhost:3001";
 
@@ -50,6 +50,7 @@ function App() {
             path="cities"
             element={<CityList cities={cities} isLoading={isLoading} />}
           />
+          <Route path="cities/:id" element={<City />} />
           <Route
             path="countries"
             element={<CountryList cities={cities} isLoading={isLoading} />}
